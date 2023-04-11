@@ -32,8 +32,13 @@ function example() {
   return (
     <>
       {/* Set content to sheet data */}
-      <div>Title: {sheetData[0][0]}</div>
-      <div>Description: {sheetData[0][1]}</div>
+      {/* Displays error if unable to load */}
+      <div>Title: {sheetData[0][0] ? 
+        "Failed to load!" : sheetData[0][0]
+      }</div>
+      <div>Description: {sheetData[0][1] ? 
+        "Failed to load!" : sheetData[0][1]
+      }</div>
     </>
   );
 }

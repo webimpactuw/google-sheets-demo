@@ -16,6 +16,7 @@ This sample project is an example of how you can integrate the Google Sheets API
 5) Under the 'Credentials' tab and select 'Create Credentials' -> 'API Key'
 6) Select the created API key from the list of API keys
 7) Add a restriction to the Google Sheets API and Save
+> You can also specify a restriction to a website; useful if you know the URL of your deployment
 
 ### Creating a Google Sheets
 1) Create a Google Sheets file
@@ -29,6 +30,7 @@ This sample project is an example of how you can integrate the Google Sheets API
 1) In the HTML file, create a div with an id: ``<div id="title-1"></div>``
 2) Add a link to a JS script in the head: ``<script src="script.js"></script>``
 3) Create the JS script: ``script.js``
+> Make sure that the script is linked properly with the path given
 4) In the JS file, prepare an API call (see ``script.js`` in the repo)
 5) Run a function on page load: ``document.addEventListener('DOMContentLoaded', init);``
 6) Modify the div's text: ``document.getElementById("title-1").innerText = JSON.parse(rep)["values"][A][B];``
@@ -40,5 +42,12 @@ This sample project is an example of how you can integrate the Google Sheets API
 1) In a component's JS file, import ``useState`` and ``useEffect``
 2) Prepare an API call in the corresponding JS file (see ``script.js`` in the repo)
 3) In the component, create a state variable (array): ``const [sheetData, setSheetData] = useState([]);``
-4) Use the effect hook to call the API and read in the data (see ``useEffect`` in ``react-example.js``)
-5) In the return function, read in the state variable as text (e.g. ``<div>{sheetData[0][0]}</div>``)
+> This is one way to implement this. You can also just use a `let` variable since we only modify it once. 
+5) Use the effect hook to call the API and read in the data (see ``useEffect()`` in ``react-example.js``)
+6) In the return function, read in the state variable as text (e.g. ``<div>{sheetData[A][B]}</div>``)
+> We parse the returned JSON from the API as a 2-D array. In this case, we are reading row A and column B
+
+### Notes
+* Google Sheet cells are 1-indexed while JS arrays are 0-indexed!
+* It's helpful to include include "Loading..." and "Failed to load!" text to inform the user of loading/errors
+* API keys are not secure in a public repo. Consider using an alternative hosting service (i.e. [Vercel](https://vercel.com))
