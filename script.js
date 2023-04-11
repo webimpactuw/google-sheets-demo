@@ -2,14 +2,14 @@
 // API keys should be kept confidential (e.g. '.env' file)
 const API_KEY = "AIzaSyCC-Poq-9g4JbabXN6ai6bBUnMFHMJl10E";
 
-// Sheet ID is the unique identifier for your Google Sheet
-// It can be found at the end of the URL
+// The Sheet ID is the unique identifier for your Google Sheet
+// It can be found at the end of the URL (aka 'spreadsheetId')
 const SHEET_ID = "1OnYvbj4DbTXXjTL8_SGNAK9b4ypUpxeGhgCfaBnvqsI";
 
-// Sheet Name is the name of the sheet within the Google Sheet
+// The Sheet name is the name of the sheet within the Google Sheet
 // The name can be found at the bottom of the interface (default is Sheet1)
 // This can be used dynamically to access data from different sheets
-const SHEET_NAME = "Sheet1";
+let SHEET_NAME = "Sheet1";
 
 // Constructing query to call the API
 const base = `https://docs.google.com/spreadsheets/d/${SHEET_ID}`;
