@@ -1,2 +1,40 @@
-# Google-Sheets-Demo
-Example project using the Google Sheets API
+# Google Sheets Demo
+This sample project is an example of how you can integrate the Google Sheets API into your project! 
+
+### How It Works
+* Google provides free (but limited) usage to their API
+* The client (webpage) fetches data using an API key and info for a Google Sheets
+* Once returned, the client reads in the information and modifies the page accordingly
+
+## Getting Started
+
+### Preparing the API
+1) Visit [console.cloud.google.com](http://console.cloud.google.com)
+2) Select an account and create a project
+3) In the console search bar, look up "Google Sheets API"
+4) Select the API and enable it
+5) Under the 'Credentials' tab and select 'Create Credentials' -> 'API Key'
+6) Select the created API key from the list of API keys
+7) Add a restriction to the Google Sheets API and Save
+
+### Creating a Google Sheets
+1) Create a Google Sheets file
+2) Under 'Share', enable 'Anyone with the link' the view the file
+3) Copy the Spreadsheet ID (a string found near the end of the URL
+> ...docs.google.com/spreadsheets/d/ <b>SPREADSHEET_ID</b> /edit...
+4) Take note of the Sheet names used
+> Sheet names can be found at bottom-left. The default is "Sheet1"
+
+### Setting up the client (HTML/CSS)
+1) In the HTML file, create a div with an id: ``<div id="title-1"></div>``
+2) Add a link to a JS script in the head: ``<script src="script.js"></script>``
+3) Create the JS script: ``script.js``
+4) In the JS file, prepare an API call (see ``script.js`` in the repo)
+5) Run a function on page load: ``document.addEventListener('DOMContentLoaded', init);``
+6) Modify the div's text: ``document.getElementById("title-1").innerText = JSON.parse(rep)["values"][A][B];``
+> We parse the returned JSON from the API as a 2-D array. In this case, we are reading row A and column B
+7) Repeat the modification with other sheet cells as needed
+
+
+### Setting up the client (React)
+1) Work in progress
