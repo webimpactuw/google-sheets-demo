@@ -37,4 +37,8 @@ This sample project is an example of how you can integrate the Google Sheets API
 
 
 ### Setting up the client (React)
-1) Work in progress
+1) In a component's JS file, import ``useState`` and ``useEffect``
+2) Prepare an API call in the corresponding JS file (see ``script.js`` in the repo)
+3) In the component, create a state variable (array): ``const [sheetData, setSheetData] = useState([]);``
+4) Use the effect hook to call the API and read in the data (see ``useEffect`` in ``react-example.js``)
+5) In the return function, read in the state variable as text (e.g. ``<div>{sheetData[0][0]}</div>``)
