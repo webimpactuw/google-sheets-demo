@@ -1,6 +1,6 @@
 // Remember to restrict your API Key! 
 // API keys should ideally be kept confidential (e.g. '.env' file)
-const API_KEY = "AIzaSyCC-Poq-9g4JbabXN6ai6bBUnMFHMJl10E";
+const API_KEY = "AIzaSyAJGWVuRtpFPOCcPh-yM9pdof5MJCv29RM";
 
 // The Sheet ID is the unique identifier for your Google Sheet
 // It can be found near the end of the URL

@@ -13,9 +13,10 @@ This sample project is an example of how you can integrate the Google Sheets API
 2) Select an account and create a project
 3) In the console search bar, look up "Google Sheets API"
 4) Select the API and enable it
-5) Under the 'Credentials' tab and select 'Create Credentials' -> 'API Key'
+5) Under the 'Credentials' tab (in the API info sidebar), select 'Create Credentials' -> 'API Key'
 6) Select the created API key from the list of API keys
-7) Add a restriction to the Google Sheets API and Save
+7) (Optional) Rename the API key to 'Sheets API'
+8) Add a restriction to the Google Sheets API and Save
 > You can also specify a restriction to a website; useful if you know the URL of your deployment
 
 ### Creating a Google Sheets
@@ -24,16 +25,17 @@ This sample project is an example of how you can integrate the Google Sheets API
 3) Copy the Spreadsheet ID (a string found near the end of the URL
 > ...docs.google.com/spreadsheets/d/ <b>SPREADSHEET_ID</b> /edit...
 4) Take note of the Sheet names used
-> Sheet names can be found at bottom-left. The default is "Sheet1"
+> Sheet names can be found at bottom-left of a Google Sheets. The default is 'Sheet1'
 
-### Setting up the client (HTML/CSS)
-1) In the HTML file, create a div with an id: ``<div id="title-1"></div>``
+### Setting up the client (HTML/JS)
+1) In the HTML file, create a div with any id: ``<div id="title-1"></div>``
 2) Add a link to a JS script in the head: ``<script src="script.js"></script>``
 3) Create the JS script: ``script.js``
-> Make sure that the script is linked properly with the path given
-4) In the JS file, prepare an API call (see ``script.js`` in the repo)
-5) Run a function on page load: ``document.addEventListener('DOMContentLoaded', init);``
-6) Modify the div's text: ``document.getElementById("title-1").innerText = JSON.parse(rep)["values"][A][B];``
+> Make sure that the script source points to the correct path!
+4) In the JS file, prepare an API call (see the declarations in ``script.js`` of this repo)
+5) Run a function on page load: ``document.addEventListener('DOMContentLoaded', loadData);``
+* In this case, the function ``loadData()`` would be called upon page load
+6) In the function, modify the div's text: ``document.getElementById("title-1").innerText = JSON.parse(rep)["values"][A][B];``
 > We parse the returned JSON from the API as a 2-D array. In this case, we are reading row A and column B
 7) Repeat the modification with other sheet cells as needed
 
@@ -49,5 +51,6 @@ This sample project is an example of how you can integrate the Google Sheets API
 
 ### Notes
 * Google Sheet cells are 1-indexed while JS arrays are 0-indexed!
-* It's helpful to include include "Loading..." and "Failed to load!" text to inform the user of loading/errors
-* API keys are not secure in a public repo. Consider using an alternative hosting service (i.e. [Vercel](https://vercel.com))
+* It's helpful to include include "Loading..." and "Failed to load!" placeholder texts to inform the user of loading/errors
+* Exposing your API key to a public repository is not recommended. 
+  * Consider using an alternative hosting service (i.e. [Vercel](https://vercel.com))
