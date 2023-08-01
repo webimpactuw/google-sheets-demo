@@ -28,14 +28,28 @@ This sample project is an example of how you can integrate the Google Sheets API
 > Sheet names can be found at bottom-left of a Google Sheets. The default is 'Sheet1'
 
 ### Setting up the client (HTML/JS)
-1) In the HTML file, create a div with any id: ``<div id="title-1"></div>``
-2) Add a link to a JS script in the head: ``<script src="script.js"></script>``
-3) Create the JS script: ``script.js``
-> Make sure that the script source points to the correct path!
-4) In the JS file, prepare an API call (see the declarations in ``script.js`` of this repo)
-5) Run a function on page load: ``document.addEventListener('DOMContentLoaded', loadData);``
-* In this case, the function ``loadData()`` would be called upon page load
-6) In the function, modify the div's text: ``document.getElementById("title-1").innerText = JSON.parse(rep)["values"][A][B];``
+0) See ``script.js`` of this repo for an example
+1) In the HTML file, create a div with an id: ``<div id="title-1"></div>``
+2) Add links to JavaScript files in the head: 
+> ``<script src="env.js"></script>``
+> 
+> ``<script src="script.js"></script>``
+3) Create the JS scripts: ``env.js``, ``script.js``
+> Make sure that the script sources point to the correct path!
+4) In ``script.js``, prepare an API call (see ``env.js`` for more info)
+5) Create a function to run upon page load:
+> ``document.addEventListener('DOMContentLoaded', loadData);``
+> 
+> In this case, the function ``loadData()`` would be called upon page load
+6) In the function, fetch the sheet data to insert into the div's text:
+```
+try {
+    fetch(url)
+        .then(res => res.text())
+        .then(rep => { ...
+```
+> ``document.getElementById("title-1").innerText = JSON.parse(rep)["values"][A][B];``
+> 
 > We parse the returned JSON from the API as a 2-D array. In this case, we are reading row A and column B
 7) Repeat the modification with other sheet cells as needed
 
@@ -44,7 +58,7 @@ This sample project is an example of how you can integrate the Google Sheets API
 1) In a component's JS file, import ``useState`` and ``useEffect``
 2) Prepare an API call in the corresponding JS file (see ``script.js`` in the repo)
 3) In the component, create a state variable (array): ``const [sheetData, setSheetData] = useState([]);``
-> This is one way to implement this. You can also just use a `let` variable since we only modify it once. 
+> This is one way to implement this. You can also just use a `let` variable since we don't modify it once it's been set
 5) Use the effect hook to call the API and read in the data (see ``useEffect()`` in ``react-example.js``)
 6) In the return function, read in the state variable as text (e.g. ``<div>{sheetData[A][B]}</div>``)
 > We parse the returned JSON from the API as a 2-D array. In this case, we are reading row A and column B
@@ -52,5 +66,5 @@ This sample project is an example of how you can integrate the Google Sheets API
 ### Notes
 * Google Sheet cells are 1-indexed while JS arrays are 0-indexed!
 * It's helpful to include include "Loading..." and "Failed to load!" placeholder texts to inform the user of loading/errors
-* Exposing your API key to a public repository is not recommended. 
+* Exposing your API key to a public repository on GitHub is not recommended. 
   * Consider using an alternative hosting service (i.e. [Vercel](https://vercel.com))

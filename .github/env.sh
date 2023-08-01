@@ -1,0 +1,1 @@
+echo "const API_KEY = '$1'"  >> env.js

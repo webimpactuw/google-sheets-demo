@@ -1,10 +1,10 @@
 // Import State, Effect hooks
 import React, { useState, useEffect } from 'react';
 
-// Read script.js for more details
-const API_KEY = "AIzaSyCC-Poq-9g4JbabXN6ai6bBUnMFHMJl10E";
-const SHEET_ID = "1OnYvbj4DbTXXjTL8_SGNAK9b4ypUpxeGhgCfaBnvqsI";
-let SHEET_NAME = "Sheet1";
+// Read env.js for more details
+const API_KEY = '...';
+const SHEET_ID = '...';
+let SHEET_NAME = '...';
 
 // Constructing query to call the API
 let url = 'https://sheets.googleapis.com/v4/spreadsheets/' + 
@@ -13,7 +13,7 @@ let url = 'https://sheets.googleapis.com/v4/spreadsheets/' +
 function example() {
   // Store sheet data using State
   const [sheetData, setSheetData] = useState([]);
-  // Runs on page load using Effect
+  // Runs on page load using Effect hook
   useEffect(() => {
     try {
       fetch(url)
@@ -31,13 +31,11 @@ function example() {
 
   return (
     <>
-      {/* Set content to sheet data */}
-      {/* Displays error if unable to load */}
       <div>Title: {sheetData[0][0] ? 
-        "Failed to load!" : sheetData[0][0]
+        sheetData[0][0] : "Failed to load!"
       }</div>
       <div>Description: {sheetData[0][1] ? 
-        "Failed to load!" : sheetData[0][1]
+        sheetData[0][1] : "Failed to load!"
       }</div>
     </>
   );
